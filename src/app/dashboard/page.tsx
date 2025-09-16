@@ -6,7 +6,7 @@ import { UserProfile } from "@/components/auth/user-profile";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lock, Upload, Palette, Download, Sparkles, Coins } from "lucide-react";
+import { Lock, Upload, Palette, Download, Sparkles, Coins, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 const ROOM_TYPES = [
@@ -175,7 +175,31 @@ export default function DesignStudioPage() {
   }
 
   return (
-    <div className="container mx-auto p-6 max-w-7xl">
+    <div className="container mx-auto p-6 max-w-7xl relative">
+      {/* Loading Overlay */}
+      {isGenerating && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-xl max-w-sm mx-4">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="relative">
+                <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
+                <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-ping"></div>
+              </div>
+              <div className="text-center space-y-2">
+                <h3 className="text-lg font-semibold">Generating Your Design</h3>
+                <p className="text-sm text-muted-foreground">
+                  Our AI is transforming your {selectedRoomType} with {selectedStyle} style...
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
