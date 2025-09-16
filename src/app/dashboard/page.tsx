@@ -182,8 +182,8 @@ export default function DesignStudioPage() {
           <div className="bg-card rounded-lg p-8 shadow-xl max-w-sm mx-4 border">
             <div className="flex flex-col items-center space-y-4">
               <div className="relative">
-                <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
-                <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-ping"></div>
+                <Loader2 className="w-12 h-12 text-primary animate-spin" />
+                <div className="absolute inset-0 bg-primary rounded-full opacity-20 animate-ping"></div>
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-lg font-semibold">Generating Your Design</h3>
@@ -191,9 +191,9 @@ export default function DesignStudioPage() {
                   Our AI is transforming your {selectedRoomType} with {selectedStyle} style...
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
               </div>
             </div>
@@ -259,7 +259,7 @@ export default function DesignStudioPage() {
                     />
                     <button
                       onClick={() => setUploadedImage(null)}
-                      className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600"
+                      className="absolute top-2 right-2 bg-destructive text-destructive-foreground p-1 rounded-full hover:bg-destructive/90"
                     >
                       ×
                     </button>
@@ -364,7 +364,7 @@ export default function DesignStudioPage() {
                       alt="AI generated design"
                       className="w-full h-96 object-cover rounded-lg"
                     />
-                    <Badge className="absolute top-2 left-2 bg-green-500">
+                    <Badge variant="secondary" className="absolute top-2 left-2">
                       AI Generated
                     </Badge>
                   </div>

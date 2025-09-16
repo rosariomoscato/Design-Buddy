@@ -11,15 +11,15 @@ export default function LandingPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-background to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-muted via-background to-muted">
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-6xl mx-auto text-center space-y-8">
             <div className="space-y-6">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg">
+                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary shadow-lg">
                   <Palette className="h-8 w-8 text-white" />
                 </div>
-                <h1 className="text-6xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-foreground">
                   Design Buddy
                 </h1>
               </div>
@@ -74,8 +74,8 @@ export default function LandingPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center space-y-4">
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 mx-auto">
-                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto">
+                  <span className="text-2xl font-bold text-primary">1</span>
                 </div>
                 <h3 className="text-xl font-semibold">Upload Your Room</h3>
                 <p className="text-muted-foreground">
@@ -84,8 +84,8 @@ export default function LandingPage() {
               </div>
 
               <div className="text-center space-y-4">
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900 mx-auto">
-                  <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">2</span>
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto">
+                  <span className="text-2xl font-bold text-primary">2</span>
                 </div>
                 <h3 className="text-xl font-semibold">Choose Your Style</h3>
                 <p className="text-muted-foreground">
@@ -170,9 +170,9 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center text-white space-y-6">
+          <div className="max-w-4xl mx-auto text-center text-primary-foreground space-y-6">
             <h2 className="text-4xl font-bold">
               Ready to Transform Your Space?
             </h2>

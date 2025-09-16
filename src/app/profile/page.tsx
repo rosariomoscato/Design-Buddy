@@ -171,7 +171,7 @@ export default function ProfilePage() {
                     <p className="text-sm text-muted-foreground">Active now</p>
                   </div>
                 </div>
-                <Badge variant="outline" className="text-green-600 border-green-600">
+                <Badge variant="outline" className="text-green-600 dark:text-green-400 border-green-600">
                   Active
                 </Badge>
               </div>

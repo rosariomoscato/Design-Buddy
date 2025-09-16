@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center space-y-4">
           <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary">
               <Palette className="h-5 w-5 text-white" />
             </div>
             <span className="font-semibold">Design Buddy</span>
