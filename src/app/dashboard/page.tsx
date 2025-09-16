@@ -179,7 +179,7 @@ export default function DesignStudioPage() {
       {/* Loading Overlay */}
       {isGenerating && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-xl max-w-sm mx-4">
+          <div className="bg-card rounded-lg p-8 shadow-xl max-w-sm mx-4 border">
             <div className="flex flex-col items-center space-y-4">
               <div className="relative">
                 <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />

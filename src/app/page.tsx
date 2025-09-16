@@ -11,7 +11,7 @@ export default function LandingPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-background to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-6xl mx-auto text-center space-y-8">
             <div className="space-y-6">
@@ -62,7 +62,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -108,7 +108,7 @@ export default function LandingPage() {
       </section>
 
       {/* Room Types Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -129,7 +129,7 @@ export default function LandingPage() {
                 { name: "Nursery", icon: "👶" },
                 { name: "Outdoor", icon: "🌳" },
               ].map((room) => (
-                <div key={room.name} className="text-center p-6 rounded-lg bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
+                <div key={room.name} className="text-center p-6 rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-2">{room.icon}</div>
                   <h3 className="font-medium">{room.name}</h3>
                 </div>
@@ -140,7 +140,7 @@ export default function LandingPage() {
       </section>
 
       {/* Design Styles Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
