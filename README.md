@@ -1,163 +1,178 @@
-# Agentic Coding Boilerplate
+# Design Buddy - AI Interior Design Application
 
-A complete agentic coding boilerplate with authentication, PostgreSQL database, AI chat functionality, and modern UI components - perfect for building AI-powered applications and autonomous agents.
+Transform your living spaces with AI-powered interior design. Design Buddy allows users to upload photos of their rooms and apply professional design styles using Google's advanced Gemini AI technology.
 
-## 🚀 Features
+## 🎨 Features
 
-- **🔐 Authentication**: Better Auth with Google OAuth integration
-- **🗃️ Database**: Drizzle ORM with PostgreSQL
-- **🤖 AI Integration**: Vercel AI SDK with OpenAI support
-- **🎨 UI Components**: shadcn/ui with Tailwind CSS
-- **⚡ Modern Stack**: Next.js 15, React 19, TypeScript
-- **📱 Responsive**: Mobile-first design approach
+### AI-Powered Design Generation
+- **🤖 Google Gemini Integration**: Advanced AI image generation using Google's Gemini 2.0 Flash
+- **📸 Room Photo Upload**: Drag-and-drop interface for uploading room images
+- **🏠 Multiple Room Types**: Living Room, Kitchen, Bedroom, Bathroom, Home Office, Dining Room, Nursery, Outdoor
+- **🎨 8 Design Styles**: Modern, Coastal, Professional, Tropical, Vintage, Industrial, Neoclassical, Tribal
+- **💾 Download Results**: High-quality generated designs ready for download
 
-## 🎥 Video Tutorial
+### User Experience
+- **🔐 Google OAuth Authentication**: Secure sign-in with Google accounts
+- **💳 Credit System**: 30 free credits per user for design generation
+- **📱 Fully Responsive**: Works seamlessly on desktop, tablet, and mobile
+- **🌙 Dark/Light/System Themes**: Consistent theming across all pages
+- **⚡ Real-time Generation**: Live loading states with progress indicators
 
-Watch the complete walkthrough of this agentic coding template:
+### Technical Excellence
+- **🚀 Next.js 15**: Latest App Router with React 19 and TypeScript
+- **🗃️ PostgreSQL Database**: Drizzle ORM with robust schema design
+- **🎨 shadcn/ui Components**: Professional UI with Tailwind CSS
+- **⚡ Performance Optimized**: Turbopack development server
+- **🔄 Transaction Safety**: Atomic credit operations with rollback support
 
-[![Agentic Coding Boilerplate Tutorial](https://img.youtube.com/vi/T0zFZsr_d0Q/maxresdefault.jpg)](https://youtu.be/T0zFZsr_d0Q)
+## 🏗️ Technical Architecture
 
-<a href="https://youtu.be/T0zFZsr_d0Q" target="_blank" rel="noopener noreferrer">🔗 Watch on YouTube</a>
+### Frontend Stack
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript for type safety
+- **Styling**: Tailwind CSS with custom theme configuration
+- **Components**: shadcn/ui with consistent design tokens
+- **State Management**: React hooks with server actions
+- **Theming**: next-themes with dark/light/system support
 
-## ☕ Support This Project
+### Backend Stack
+- **Database**: PostgreSQL with Drizzle ORM
+- **Authentication**: Better Auth with Google OAuth
+- **AI Integration**: Google Gemini SDK for image generation
+- **API Routes**: Next.js API routes with proper error handling
+- **File Handling**: Base64 image processing with validation
+- **Credit System**: Transaction-based credit management
 
-If this boilerplate helped you build something awesome, consider buying me a coffee!
+### Key Technical Features
 
-[![Buy me a coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/leonvanzyl)
+#### Database Schema
+```sql
+-- Users table with authentication and credits
+user (id, email, name, image, credits, createdAt)
 
-## 📋 Prerequisites
+-- Credit usage tracking with transaction safety
+creditUsage (id, userId, amount, description, createdAt)
 
-Before you begin, ensure you have the following installed on your machine:
-
-- **Node.js**: Version 18.0 or higher (<a href="https://nodejs.org/" target="_blank">Download here</a>)
-- **Git**: For cloning the repository (<a href="https://git-scm.com/" target="_blank">Download here</a>)
-- **PostgreSQL**: Either locally installed or access to a hosted service like Vercel Postgres
-
-## 🛠️ Quick Setup
-
-### 1. Clone or Download the Repository
-
-**Option A: Clone with Git**
-
-```bash
-git clone https://github.com/leonvanzyl/agentic-coding-starter-kit.git
-cd agentic-coding-starter-kit
+-- Session management for authentication
+session (id, userId, expiresAt)
 ```
 
-**Option B: Download ZIP**
-Download the repository as a ZIP file and extract it to your desired location.
+#### AI Integration
+- **Model**: Google Gemini 2.0 Flash Experimental
+- **Processing**: Base64 image encoding/decoding
+- **Error Handling**: Geographical restrictions, quota management
+- **Fallback**: Credit refund on generation failures
+- **Validation**: Image size, format, and content validation
 
-### 2. Install Dependencies
+#### Credit System
+- **Initial Balance**: 30 credits per new user
+- **Cost**: 1 credit per design generation
+- **Transactions**: Atomic operations with rollback
+- **History**: Complete usage tracking and analytics
+- **Refunds**: Automatic refunds on failed generations
 
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js**: Version 18.0 or higher
+- **PostgreSQL**: Local or cloud-hosted database
+- **Google Cloud Account**: For OAuth credentials and Gemini API
+
+### Environment Setup
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/rosariomoscato/Design-Buddy.git
+cd Design-Buddy
+```
+
+2. **Install dependencies**
 ```bash
 npm install
 ```
 
-### 3. Environment Setup
-
-Copy the example environment file:
-
+3. **Configure environment variables**
 ```bash
 cp env.example .env
 ```
 
-Fill in your environment variables in the `.env` file:
-
+4. **Set up your `.env` file**
 ```env
-# Database
-POSTGRES_URL="postgresql://username:password@localhost:5432/your_database_name"
+# Database Connection
+POSTGRES_URL="postgresql://username:password@localhost:5432/design_buddy"
 
 # Authentication - Better Auth
-BETTER_AUTH_SECRET="your-random-32-character-secret-key-here"
+BETTER_AUTH_SECRET="your-32-character-random-secret"
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
-# Google OAuth (Get from Google Cloud Console)
+# Google OAuth Credentials
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
-# AI Integration (Optional - for chat functionality)
-OPENAI_API_KEY="sk-your-openai-api-key-here"
-OPENAI_MODEL="gpt-5-mini"
-
-# App URL (for production deployments)
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+# Google AI API
+GOOGLE_GENAI_API_KEY="your-google-genai-api-key"
 ```
 
-### 4. Database Setup
+### Database Setup
 
-Generate and run database migrations:
-
+1. **Generate database schema**
 ```bash
 npm run db:generate
+```
+
+2. **Run migrations**
+```bash
 npm run db:migrate
 ```
 
-### 5. Start the Development Server
+### Start Development
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at [http://localhost:3000](http://localhost:3000)
+Visit `http://localhost:3000` to see the application.
 
-## ⚙️ Service Configuration
-
-### PostgreSQL Database on Vercel
-
-1. Go to <a href="https://vercel.com/dashboard" target="_blank">Vercel Dashboard</a>
-2. Navigate to the **Storage** tab
-3. Click **Create** → **Postgres**
-4. Choose your database name and region
-5. Copy the `POSTGRES_URL` from the `.env.local` tab
-6. Add it to your `.env` file
-
-### Google OAuth Credentials
-
-1. Go to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>
-2. Create a new project or select an existing one
-3. Navigate to **Credentials** → **Create Credentials** → **OAuth 2.0 Client ID**
-4. Set application type to **Web application**
-5. Add authorized redirect URIs:
-   - `http://localhost:3000/api/auth/callback/google` (development)
-   - `https://yourdomain.com/api/auth/callback/google` (production)
-6. Copy the **Client ID** and **Client Secret** to your `.env` file
-
-### OpenAI API Key
-
-1. Go to <a href="https://platform.openai.com/dashboard" target="_blank">OpenAI Platform</a>
-2. Navigate to **API Keys** in the sidebar
-3. Click **Create new secret key**
-4. Give it a name and copy the key
-5. Add it to your `.env` file as `OPENAI_API_KEY`
-
-## 🗂️ Project Structure
+## 📂 Project Structure
 
 ```
 src/
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   │   ├── auth/          # Authentication endpoints
-│   │   └── chat/          # AI chat endpoint
-│   ├── chat/              # AI chat page
-│   ├── dashboard/         # User dashboard
-│   └── page.tsx           # Home page
-├── components/            # React components
-│   ├── auth/             # Authentication components
-│   └── ui/               # shadcn/ui components
-└── lib/                  # Utilities and configurations
-    ├── auth.ts           # Better Auth configuration
-    ├── auth-client.ts    # Client-side auth utilities
-    ├── db.ts             # Database connection
-    ├── schema.ts         # Database schema
-    └── utils.ts          # General utilities
+├── app/                          # Next.js App Router
+│   ├── api/                     # API Routes
+│   │   ├── auth/                # Authentication endpoints
+│   │   ├── credits/             # Credit management
+│   │   └── generate-design/     # AI design generation
+│   ├── dashboard/               # Design studio (main app)
+│   ├── page.tsx                # Landing page
+│   ├── layout.tsx              # Root layout
+│   └── globals.css             # Global styles
+├── components/                  # React Components
+│   ├── auth/                   # Authentication components
+│   ├── site-header.tsx         # Application header
+│   ├── site-footer.tsx         # Application footer
+│   └── ui/                     # shadcn/ui components
+├── lib/                         # Core Utilities
+│   ├── auth.ts                 # Better Auth configuration
+│   ├── auth-client.ts          # Client auth utilities
+│   ├── credit-service.ts       # Credit management system
+│   ├── db.ts                   # Database connection
+│   └── schema.ts               # Database schema
+└── drizzle/                     # Database migrations
 ```
 
 ## 🔧 Available Scripts
 
 ```bash
+# Development
 npm run dev          # Start development server with Turbopack
 npm run build        # Build for production
 npm run start        # Start production server
+
+# Code Quality
 npm run lint         # Run ESLint
+npm run typecheck   # Run TypeScript type checking
+
+# Database Operations
 npm run db:generate  # Generate database migrations
 npm run db:migrate   # Run database migrations
 npm run db:push      # Push schema changes to database
@@ -166,52 +181,103 @@ npm run db:dev       # Push schema for development
 npm run db:reset     # Reset database (drop all tables)
 ```
 
-## 📖 Pages Overview
+## 🎨 User Flow
 
-- **Home (`/`)**: Landing page with setup instructions and features overview
-- **Dashboard (`/dashboard`)**: Protected user dashboard with profile information
-- **Chat (`/chat`)**: AI-powered chat interface using OpenAI (requires authentication)
+### 1. **Landing Page** (`/`)
+- Hero section with app introduction
+- Feature showcase and room types
+- Design styles demonstration
+- Call-to-action for getting started
+
+### 2. **Authentication**
+- Google OAuth sign-in
+- Automatic user account creation
+- Initial 30 credit allocation
+
+### 3. **Design Studio** (`/dashboard`)
+- **Image Upload**: Drag-and-drop or click to upload room photos
+- **Room Selection**: Choose from 8 different room types
+- **Style Selection**: Pick from 8 professional design styles
+- **Credit Display**: Real-time credit balance
+- **Generation**: AI-powered design transformation
+- **Results**: View and download generated designs
+
+### 4. **User Management**
+- Profile management
+- Credit usage history
+- Session management
+
+## 🌍 Theme System
+
+The application features a comprehensive theming system:
+
+### Theme Options
+- **Light Mode**: Clean, bright interface
+- **Dark Mode**: Easy-on-the-eyes dark theme
+- **System Mode**: Respects user's system preference
+
+### Design Tokens
+- **Semantic Colors**: `bg-primary`, `text-primary`, `bg-muted`, etc.
+- **Consistent Tokens**: All components use standardized colors
+- **Automatic Adaptation**: Seamless theme switching
+- **Persistent Storage**: Theme preference saved locally
+
+## 🛡️ Error Handling
+
+### AI Generation Errors
+- **Geographical Restrictions**: User-friendly messaging with credit refunds
+- **API Quota Limits**: Graceful degradation with clear communication
+- **Invalid Images**: Validation before processing
+- **Network Issues**: Retry mechanisms and timeout handling
+
+### Credit System Errors
+- **Insufficient Credits**: Prevents generation with upgrade prompts
+- **Transaction Failures**: Automatic rollback and user notification
+- **Race Conditions**: Atomic operations prevent double-spending
+
+### Authentication Errors
+- **OAuth Failures**: Clear error messages and retry options
+- **Session Expiry**: Automatic re-authentication
+- **Invalid Tokens**: Secure handling with redirect to login
 
 ## 🚀 Deployment
 
-### Deploy to Vercel (Recommended)
+### Vercel (Recommended)
+1. **Connect Repository**: Link your GitHub repository to Vercel
+2. **Environment Variables**: Add all required environment variables
+3. **Database**: Use Vercel Postgres or external PostgreSQL
+4. **Deploy**: Automatic deployment on every push to main branch
 
-1. Install the Vercel CLI globally:
+### Environment Variables Required
+```env
+POSTGRES_URL                    # Production database URL
+BETTER_AUTH_SECRET              # Secure random secret
+NEXT_PUBLIC_APP_URL             # Production domain
+GOOGLE_CLIENT_ID               # Google OAuth client ID
+GOOGLE_CLIENT_SECRET           # Google OAuth client secret
+GOOGLE_GENAI_API_KEY           # Google Gemini API key
+```
 
-   ```bash
-   npm install -g vercel
-   ```
+## 🔮 Future Enhancements
 
-2. Deploy your application:
+### Planned Features
+- **Multiple AI Models**: Support for different AI providers
+- **Batch Processing**: Generate multiple designs at once
+- **Style Customization**: Create custom design styles
+- **User Galleries**: Save and organize generated designs
+- **Collaboration**: Share designs with friends and family
+- **Mobile App**: React Native companion app
 
-   ```bash
-   vercel --prod
-   ```
-
-3. Follow the prompts to configure your deployment
-4. Add your environment variables when prompted or via the Vercel dashboard
-
-### Production Environment Variables
-
-Ensure these are set in your production environment:
-
-- `POSTGRES_URL` - Production PostgreSQL connection string
-- `BETTER_AUTH_SECRET` - Secure random 32+ character string
-- `GOOGLE_CLIENT_ID` - Google OAuth Client ID
-- `GOOGLE_CLIENT_SECRET` - Google OAuth Client Secret
-- `OPENAI_API_KEY` - OpenAI API key (optional)
-- `OPENAI_MODEL` - OpenAI model name (optional, defaults to gpt-5-mini)
-- `NEXT_PUBLIC_APP_URL` - Your production domain
-
-## 🎥 Tutorial Video
-
-Watch my comprehensive tutorial on how to use this agentic coding boilerplate to build AI-powered applications:
-
-<a href="https://youtu.be/T0zFZsr_d0Q" target="_blank" rel="noopener noreferrer">📺 YouTube Tutorial - Building with Agentic Coding Boilerplate</a>
+### Technical Improvements
+- **Caching Layer**: Redis for improved performance
+- **CDN Integration**: Faster image delivery
+- **Advanced Analytics**: User behavior insights
+- **A/B Testing**: Feature optimization
+- **Progressive Web App**: Offline functionality
 
 ## 🤝 Contributing
 
-1. Fork this repository
+1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
@@ -221,14 +287,18 @@ Watch my comprehensive tutorial on how to use this agentic coding boilerplate to
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Need Help?
+## 🙏 Acknowledgments
 
-If you encounter any issues:
-
-1. Check the [Issues](https://github.com/leonvanzyl/agentic-coding-starter-kit/issues) section
-2. Review the documentation above
-3. Create a new issue with detailed information about your problem
+- **Google Gemini AI**: For the powerful image generation capabilities
+- **shadcn/ui**: For the beautiful and accessible component library
+- **Vercel**: For hosting and deployment platform
+- **Better Auth**: For the robust authentication solution
 
 ---
 
-**Happy coding! 🚀**
+**Built with ❤️ using modern web technologies**
+
+[![GitHub stars](https://img.shields.io/github/stars/rosariomoscato/Design-Buddy?style=social)](https://github.com/rosariomoscato/Design-Buddy)
+[![GitHub forks](https://img.shields.io/github/forks/rosariomoscato/Design-Buddy?style=social)](https://github.com/rosariomoscato/Design-Buddy)
+
+**Visit the live application**: [Design Buddy](https://design-buddy.vercel.app)
