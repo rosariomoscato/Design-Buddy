@@ -2,173 +2,206 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SetupChecklist } from "@/components/setup-checklist";
-import { useDiagnostics } from "@/hooks/use-diagnostics";
-import { StarterPromptModal } from "@/components/starter-prompt-modal";
-import { Video, Shield, Database, Palette, Bot } from "lucide-react";
+import { useSession } from "@/lib/auth-client";
+import { Home, Palette, Wand2, Users } from "lucide-react";
 
-export default function Home() {
-  const { isAuthReady, isAiReady, loading } = useDiagnostics();
+export default function LandingPage() {
+  const { data: session } = useSession();
+
   return (
-    <main className="flex-1 container mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
-        <div className="space-y-4">
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10">
-              <Bot className="h-7 w-7 text-primary" />
-            </div>
-            <h1 className="text-5xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
-              Starter Kit
-            </h1>
-          </div>
-          <h2 className="text-2xl font-semibold text-muted-foreground">
-            Complete Boilerplate for AI Applications
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            A complete agentic coding boilerplate with authentication, database, AI
-            integration, and modern tooling for building AI-powered applications
-          </p>
-        </div>
-
-        {/* YouTube Tutorial Video */}
-        <div className="space-y-4">
-          <h3 className="text-2xl font-semibold flex items-center justify-center gap-2">
-            <Video className="h-6 w-6" />
-            Video Tutorial
-          </h3>
-          <p className="text-muted-foreground">
-            Watch the complete walkthrough of this agentic coding boilerplate:
-          </p>
-          <div className="relative w-full max-w-3xl mx-auto">
-            <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-lg border">
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/T0zFZsr_d0Q"
-                title="Agentic Coding Boilerplate Tutorial"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <div className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Shield className="h-4 w-4" />
-              Authentication
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Better Auth with Google OAuth integration
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Database className="h-4 w-4" />
-              Database
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Drizzle ORM with PostgreSQL setup
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Bot className="h-4 w-4" />
-              AI Ready
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Vercel AI SDK with OpenAI integration
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Palette className="h-4 w-4" />
-              UI Components
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              shadcn/ui with Tailwind CSS
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-6 mt-12">
-          <SetupChecklist />
-
-          <h3 className="text-2xl font-semibold">Next Steps</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-2">
-                1. Set up environment variables
-              </h4>
-              <p className="text-sm text-muted-foreground mb-2">
-                Copy <code>.env.example</code> to <code>.env.local</code> and
-                configure:
+    <main className="flex-1">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="container mx-auto px-4 py-20">
+          <div className="max-w-6xl mx-auto text-center space-y-8">
+            <div className="space-y-6">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg">
+                  <Palette className="h-8 w-8 text-white" />
+                </div>
+                <h1 className="text-6xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                  Design Buddy
+                </h1>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-semibold text-muted-foreground">
+                Transform Your Space with AI-Powered Interior Design
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Upload a photo of your room, choose your style, and let our AI redesign your space. 
+                Get professional interior design recommendations in seconds, not weeks.
               </p>
-              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                <li>POSTGRES_URL (PostgreSQL connection string)</li>
-                <li>GOOGLE_CLIENT_ID (OAuth credentials)</li>
-                <li>GOOGLE_CLIENT_SECRET (OAuth credentials)</li>
-                <li>OPENAI_API_KEY (for AI functionality)</li>
-              </ul>
             </div>
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-2">2. Set up your database</h4>
-              <p className="text-sm text-muted-foreground mb-2">
-                Run database migrations:
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {session ? (
+                <Button asChild size="lg" className="text-lg px-8 py-4">
+                  <Link href="/design-studio">
+                    <Wand2 className="h-5 w-5 mr-2" />
+                    Start Designing
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild size="lg" className="text-lg px-8 py-4">
+                  <Link href="/dashboard">
+                    <Users className="h-5 w-5 mr-2" />
+                    Get Started Free
+                  </Link>
+                </Button>
+              )}
+              <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+                <Home className="h-5 w-5 mr-2" />
+                View Demo
+              </Button>
+            </div>
+
+            <div className="mt-12 text-sm text-muted-foreground">
+              ✨ 30 free credits when you sign up • No credit card required
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">How It Works</h2>
+              <p className="text-xl text-muted-foreground">
+                Redesign your space in three simple steps
               </p>
-              <div className="space-y-2">
-                <code className="text-sm bg-muted p-2 rounded block">
-                  npm run db:generate
-                </code>
-                <code className="text-sm bg-muted p-2 rounded block">
-                  npm run db:migrate
-                </code>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 mx-auto">
+                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
+                </div>
+                <h3 className="text-xl font-semibold">Upload Your Room</h3>
+                <p className="text-muted-foreground">
+                  Take a photo or upload an image of any room in your house
+                </p>
+              </div>
+
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900 mx-auto">
+                  <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">2</span>
+                </div>
+                <h3 className="text-xl font-semibold">Choose Your Style</h3>
+                <p className="text-muted-foreground">
+                  Select from modern, coastal, industrial, and other design themes
+                </p>
+              </div>
+
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900 mx-auto">
+                  <span className="text-2xl font-bold text-green-600 dark:text-green-400">3</span>
+                </div>
+                <h3 className="text-xl font-semibold">Get AI Design</h3>
+                <p className="text-muted-foreground">
+                  Receive professional AI-generated redesigns instantly
+                </p>
               </div>
             </div>
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-2">3. Try the features</h4>
-              <div className="space-y-2">
-                {loading || !isAuthReady ? (
-                  <Button size="sm" className="w-full" disabled={true}>
-                    View Dashboard
-                  </Button>
-                ) : (
-                  <Button asChild size="sm" className="w-full">
-                    <Link href="/dashboard">View Dashboard</Link>
-                  </Button>
-                )}
-                {loading || !isAiReady ? (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full"
-                    disabled={true}
-                  >
-                    Try AI Chat
-                  </Button>
-                ) : (
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="sm"
-                    className="w-full"
-                  >
-                    <Link href="/chat">Try AI Chat</Link>
-                  </Button>
-                )}
-              </div>
-            </div>
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-2">4. Start building</h4>
-              <p className="text-sm text-muted-foreground mb-3">
-                Customize the components, add your own pages, and build your
-                application on top of this solid foundation.
+          </div>
+        </div>
+      </section>
+
+      {/* Room Types Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">Design Any Room</h2>
+              <p className="text-xl text-muted-foreground">
+                Transform every space in your home
               </p>
-              <StarterPromptModal />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { name: "Living Room", icon: "🛋️" },
+                { name: "Kitchen", icon: "🍳" },
+                { name: "Bedroom", icon: "🛏️" },
+                { name: "Bathroom", icon: "🚿" },
+                { name: "Home Office", icon: "💼" },
+                { name: "Dining Room", icon: "🍽️" },
+                { name: "Nursery", icon: "👶" },
+                { name: "Outdoor", icon: "🌳" },
+              ].map((room) => (
+                <div key={room.name} className="text-center p-6 rounded-lg bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-4xl mb-2">{room.icon}</div>
+                  <h3 className="font-medium">{room.name}</h3>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Design Styles Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">Popular Design Styles</h2>
+              <p className="text-xl text-muted-foreground">
+                Find your perfect aesthetic
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { name: "Modern", description: "Clean lines and minimal clutter" },
+                { name: "Coastal", description: "Light and airy beach-inspired" },
+                { name: "Industrial", description: "Raw materials and urban edge" },
+                { name: "Tropical", description: "Vibrant and nature-inspired" },
+                { name: "Vintage", description: "Classic and timeless charm" },
+                { name: "Neoclassical", description: "Elegant traditional design" },
+              ].map((style) => (
+                <div key={style.name} className="p-6 rounded-lg border bg-card">
+                  <h3 className="text-lg font-semibold mb-2">{style.name}</h3>
+                  <p className="text-muted-foreground text-sm">{style.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center text-white space-y-6">
+            <h2 className="text-4xl font-bold">
+              Ready to Transform Your Space?
+            </h2>
+            <p className="text-xl opacity-90">
+              Join thousands of users who have redesigned their homes with AI
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {session ? (
+                <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-4">
+                  <Link href="/design-studio">
+                    <Wand2 className="h-5 w-5 mr-2" />
+                    Start Designing
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-4">
+                  <Link href="/dashboard">
+                    <Users className="h-5 w-5 mr-2" />
+                    Get Started Free
+                  </Link>
+                </Button>
+              )}
+            </div>
+            <p className="text-sm opacity-75">
+              30 free credits • No credit card required • Cancel anytime
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

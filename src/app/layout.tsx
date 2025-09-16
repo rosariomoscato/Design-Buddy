@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agentic Coding Boilerplate",
+  title: "Design Buddy - AI Interior Design",
   description:
-    "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling - perfect for building AI-powered applications and autonomous agents by Leon van Zyl",
+    "Transform your space with AI-powered interior design. Upload photos of your rooms and get professional design recommendations in seconds.",
 };
 
 export default function RootLayout({

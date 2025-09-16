@@ -1,26 +1,32 @@
 import Link from "next/link";
 import { UserProfile } from "@/components/auth/user-profile";
 import { ModeToggle } from "./ui/mode-toggle";
-import { Bot } from "lucide-react";
+import { Palette } from "lucide-react";
 
 export function SiteHeader() {
   return (
-    <header className="border-b">
+    <header className="border-b bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold">
           <Link
             href="/"
-            className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
-              <Bot className="h-5 w-5" />
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+              <Palette className="h-5 w-5 text-white" />
             </div>
-            <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Starter Kit
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+              Design Buddy
             </span>
           </Link>
         </h1>
         <div className="flex items-center gap-4">
+          <Link 
+            href="/dashboard" 
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+          >
+            Design Studio
+          </Link>
           <UserProfile />
           <ModeToggle />
         </div>
